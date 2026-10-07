@@ -129,6 +129,6 @@ flowchart TD
 
 ## Masukan singkat untuk flowchart:
 
-Tidak ada langkah kegagalan. Belum ada cabang untuk foto CV yang buram atau tidak terbaca (minta unggah ulang).
-Tidak ada persetujuan data. Belum ada langkah consent sebelum CV diunggah, padahal ini data pribadi (UU PDP).
-Skala dinilai sekali. Kalau peserta memilih "Semua loker", skala kecocokan sebenarnya berlaku per loker, tapi di diagram terlihat hanya satu kali.
+- Tidak ada langkah kegagalan. Belum ada cabang untuk foto CV yang buram atau tidak terbaca (minta unggah ulang).
+- Tidak ada persetujuan data. Belum ada langkah consent sebelum CV diunggah, padahal ini data pribadi (UU PDP).
+- Skala dinilai sekali. Kalau peserta memilih "Semua loker", skala kecocokan sebenarnya berlaku per loker, tapi di diagram terlihat hanya satu kali.
