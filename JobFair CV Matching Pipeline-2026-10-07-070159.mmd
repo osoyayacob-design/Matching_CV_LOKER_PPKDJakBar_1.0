@@ -1,0 +1,58 @@
+flowchart TD
+    start([Peserta datang ke booth AI Automation]) --> upload["Unggah CV<br/>foto atau file digital"]
+    upload --> extract["AI mengekstrak profil CV<br/>usia, pendidikan, pengalaman, skill, dan riwayat kerja"]
+    extract --> vacancy{"Pilih pencarian loker"}
+    vacancy -->|Loker diminati| selected["Loker yang dipilih peserta"]
+    vacancy -->|Semua loker| all["Seluruh loker yang tersedia di JobFair"]
+
+    selected --> match
+    all --> match
+
+    subgraph matching["Pencocokan CV dengan Loker"]
+        direction TB
+        match["AI menganalisis kecocokan per loker"] --> criteria["Komponen penilaian:<br/>usia, pendidikan, pengalaman,<br/>dan faktor unik"]
+        criteria --> score["Hitung skor dan rincian<br/>kecocokan per komponen"]
+        score --> rank["Urutkan loker berdasarkan<br/>tingkat kecocokan"]
+    end
+
+    rank --> scale{"Skala kecocokan"}
+    scale -->|"70–100%: Sangat Cocok"| high["Tampilkan kekuatan utama,<br/>rincian skor, dan ajakan melamar"]
+    scale -->|"50–69%: Cocok"| medium["Tampilkan modal yang dimiliki,<br/>rincian skor, dan saran penguatan"]
+    scale -->|"30–49%: Berpotensi"| potential["Tampilkan pengalaman relevan,<br/>rincian skor, dan langkah peningkatan"]
+    scale -->|"Di bawah 30%: Peluang Baru"| newopportunity["Tampilkan kekuatan yang dapat ditransfer,<br/>jalur belajar, dan loker alternatif terdekat"]
+
+    high --> profile
+    medium --> profile
+    potential --> profile
+    newopportunity --> profile
+
+    profile["Gunakan profil CV dan minat loker<br/>untuk rekomendasi kejuruan PPKD JakBar"]
+
+    subgraph ppkd["Rekomendasi Kejuruan PPKD Jakarta Barat"]
+        direction LR
+        improve["Tingkatkan skill yang sudah dimiliki<br/>berdasarkan pendidikan atau riwayat kerja"]
+        newskill["Tambah skill baru<br/>berdasarkan minat dan kebutuhan loker"]
+    end
+
+    profile --> improve
+    profile --> newskill
+    improve --> course["Pilih kejuruan PPKD yang relevan<br/>beserta manfaat pelatihan dan sertifikat"]
+    newskill --> course
+
+    course --> agent["AI Agent merespons dengan pola positif:<br/>sapaan dan apresiasi → skor berframing positif →<br/>kekuatan spesifik → rincian skor → saran kejuruan → ajakan aksi"]
+    agent --> output["Output untuk peserta:<br/>persentase dan rincian kecocokan,<br/>loker prioritas atau alternatif,<br/>saran kejuruan PPKD, dan langkah berikutnya"]
+    output --> finish([Peserta lebih siap melamar dan meningkatkan skill])
+
+    classDef input fill:#eef2ff,stroke:#818cf8,stroke-width:2px
+    classDef process fill:#f0fdfa,stroke:#2dd4bf,stroke-width:2px
+    classDef decision fill:#fefce8,stroke:#facc15,stroke-width:2px
+    classDef positive fill:#f0fdf4,stroke:#4ade80,stroke-width:2px
+    classDef opportunity fill:#f5f3ff,stroke:#a78bfa,stroke-width:2px
+    classDef result fill:#ecfeff,stroke:#22d3ee,stroke-width:2px
+
+    class start,upload,selected,all input
+    class extract,match,criteria,score,rank,profile process
+    class vacancy,scale decision
+    class high,medium,potential positive
+    class newopportunity,improve,newskill,course opportunity
+    class agent,output,finish result
